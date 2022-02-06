@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane onKeyPressed="#onKeyPressed" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+    <top>
+        <HBox prefHeight="0.0" prefWidth="1280.0">
+            <children>
+                <MenuBar fx:id="menubar" prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: #ffffff; -fx-border-radius: 5px;" >
+                    <menus>
+                        <Menu fx:id="menu" mnemonicParsing="false" text="Menu">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close App" />
+                                <MenuItem mnemonicParsing="false" onAction="#openImage" text="Open Image" />
+                                <MenuItem mnemonicParsing="false" onAction="#saveImage" text="Save Image" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </HBox>
+    </top>
+    <bottom>
+        <HBox fillHeight="false" prefHeight="70.0" prefWidth="1280.0" spacing="40.0" alignment="CENTER">
+            <children>
+                <CheckBox fx:id="hideCheckbox" mnemonicParsing="false" text="Скрыть">
+                </CheckBox>
+
+                <Button fx:id="cropBtn" mnemonicParsing="false" onAction="#cutButtonPressed" style="-fx-background-color: disable; -fx-border-color: #1E90FF; -fx-border-radius: 5px;" text="Обрезать">
+                </Button>
+
+                <Slider fx:id="pingSlider" blockIncrement="1.0" majorTickUnit="1.0" max="3.0" minorTickCount="1" prefWidth="175.0" showTickLabels="true" snapToTicks="true">
+                    <HBox.margin>
+                        <Insets  top="5" right="20"/>
+                    </HBox.margin>
+                </Slider>
+
+                <Button fx:id="screenshotBtn" mnemonicParsing="false" onAction="#screenshotButtonPressed" style="-fx-background-color: #1E90FF; -fx-border-color: black; -fx-border-radius: 5px;" text="Сделать скрин" textAlignment="CENTER" textFill="#ffffff">
+                    <font>
+                        <Font  size="16.0" />
+                    </font>
+                </Button>
+                <Slider fx:id="brushSizeSlider" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="1" prefWidth="225.0" showTickLabels="true" snapToTicks="true" >
+                    <HBox.margin>
+                        <Insets  top="5" left="20"/>
+                    </HBox.margin>
+                </Slider>
+
+                <ColorPicker fx:id="colorPicker" style="-fx-background-color: none; -fx-border-color: black; -fx-border-width: 0.5px; -fx-border-radius: 5px;">
+                    <value>
+                        <Color />
+                    </value></ColorPicker>
+            </children>
+        </HBox>
+    </bottom>
+    <center>
+        <ScrollPane fx:id="scrollView" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="106.0">
+            <content>
+                <StackPane style="-fx-border-color: #E2E2E2; -fx-border-radius: 3px; -fx-border-width: 0.5px;">
+                    <children>
+                        <Canvas fx:id="imgCanvas" />
+                        <Canvas fx:id="drawCanvas" />
+                        <Canvas fx:id="cutCanvas" disable="true" opacity="0.0" />
+                    </children>
+                </StackPane>
+            </content>
+        </ScrollPane>
+    </center>
+    <left>
+        <VBox prefHeight="720.0" prefWidth="20.0" > </VBox>
+    </left>
+    <right>
+        <VBox prefHeight="720.0" prefWidth="20.0"> </VBox>
+    </right>
+</BorderPane>
